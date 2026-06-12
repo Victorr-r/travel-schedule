@@ -1,9 +1,3 @@
-//
-//  TravelScheduleApp.swift
-//  TravelSchedule
-//
-//  Created by Виктор Воробьев on 04.06.2026.
-//
 
 import SwiftUI
 

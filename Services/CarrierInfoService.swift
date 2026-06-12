@@ -10,9 +10,7 @@ final class CarrierInfoService {
 		self.apikey = apikey
 	}
 	
-	/// Запрашивает полную карточку перевозчика по его коду
 	func fetchCarrierInfo(code: String) async throws -> Components.Schemas.CarrierResponse {
-		// Вызываем метод, сгенерированный из operationId: getCarrierInfo
 		let response = try await client.getCarrierInfo(query: .init(
 			apikey: apikey,
 			code: code

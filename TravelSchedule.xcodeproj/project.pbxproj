@@ -50,11 +50,6 @@
 			path = TravelScheduleUITests;
 			sourceTree = "<group>";
 		};
-		C58078152FDC5A4200A49E9B /* Services */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Services;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +82,6 @@
 		C58077B02FD1DF5200A49E9B = {
 			isa = PBXGroup;
 			children = (
-				C58078152FDC5A4200A49E9B /* Services */,
 				C58077BB2FD1DF5200A49E9B /* TravelSchedule */,
 				C58077C92FD1DF5400A49E9B /* TravelScheduleTests */,
 				C58077D32FD1DF5400A49E9B /* TravelScheduleUITests */,
@@ -131,7 +125,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				C58077BB2FD1DF5200A49E9B /* TravelSchedule */,
-				C58078152FDC5A4200A49E9B /* Services */,
 			);
 			name = TravelSchedule;
 			packageProductDependencies = (

@@ -1,10 +1,3 @@
-//
-//  TravelScheduleUITestsLaunchTests.swift
-//  TravelScheduleUITests
-//
-//  Created by Виктор Воробьев on 04.06.2026.
-//
-
 import XCTest
 
 final class TravelScheduleUITestsLaunchTests: XCTestCase {

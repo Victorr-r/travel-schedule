@@ -37,12 +37,9 @@ final class ContentViewModel {
 			print("ℹ️ [4/8] Расписание по вокзалу: Получено \(schedule.schedule?.count ?? 0) прибывающих/убывающих поездов")
 			
 			let threadRouteService = ThreadRouteService(client: client, apikey: myKey)
-			if let firstRouteUid = routes.segments?.first?.thread?.uid {
-				let threadData = try await threadRouteService.fetchThreadRoute(threadUID: firstRouteUid)
-				print("ℹ️ [5/8] Станции следования поезда: Найдено \(threadData.stops?.count ?? 0) промежуточных остановок")
-			} else {
-				print("ℹ️ [5/8] Станции следования поезда: Пропущено (требуется active UID рейса)")
-			}
+			let testThreadUID = "FV-6188_260715_c8565_12"
+			let threadData = try await threadRouteService.fetchThreadRoute(threadUID: testThreadUID)
+			print("ℹ️ [5/8] Станции следования поезда: Найдено \(threadData.stops?.count ?? 0) промежуточных остановок")
 			
 			let nearestSettlementService = NearestSettlementService(client: client, apikey: myKey)
 			let cityData = try await nearestSettlementService.fetchNearestCity(lat: 55.755826, lng: 37.617299)

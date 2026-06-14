@@ -1,10 +1,3 @@
-//
-//  TravelScheduleTests.swift
-//  TravelScheduleTests
-//
-//  Created by Виктор Воробьев on 04.06.2026.
-//
-
 import Testing
 @testable import TravelSchedule
 

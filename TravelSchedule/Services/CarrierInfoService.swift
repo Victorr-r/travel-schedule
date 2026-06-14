@@ -1,15 +1,8 @@
 import Foundation
 import OpenAPIRuntime
 
-final class CarrierInfoService {
-	private let client: Client
-	private let apikey: String
-	
-	init(client: Client, apikey: String) {
-		self.client = client
-		self.apikey = apikey
-	}
-	
+final class CarrierInfoService: BaseYandexService {
+
 	func fetchCarrierInfo(code: String) async throws -> Components.Schemas.CarrierResponse {
 		let response = try await client.getCarrierInfo(query: .init(
 			apikey: apikey,

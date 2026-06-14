@@ -1,14 +1,7 @@
 import Foundation
 import OpenAPIRuntime
 
-final class CopyrightService {
-	private let client: Client
-	private let apikey: String
-	
-	init(client: Client, apikey: String) {
-		self.client = client
-		self.apikey = apikey
-	}
+final class CopyrightService: BaseYandexService {
 	
 	func fetchCopyright() async throws -> Components.Schemas.CopyrightResponse {
 		let response = try await client.getCopyrightInfo(query: .init(

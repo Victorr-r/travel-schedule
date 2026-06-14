@@ -1,14 +1,7 @@
 import Foundation
 import OpenAPIRuntime
 
-final class RouteSearchService {
-	private let client: Client
-	private let apikey: String
-	
-	init(client: Client, apikey: String) {
-		self.client = client
-		self.apikey = apikey
-	}
+final class RouteSearchService: BaseYandexService {
 	
 	func fetchRoutes(from stationA: String, to stationB: String, date: String?) async throws -> Components.Schemas.Segments {
 		

@@ -1,14 +1,7 @@
 import Foundation
 import OpenAPIRuntime
 
-final class NearestSettlementService {
-	private let client: Client
-	private let apikey: String
-	
-	init(client: Client, apikey: String) {
-		self.client = client
-		self.apikey = apikey
-	}
+final class NearestSettlementService: BaseYandexService {
 	
 	func fetchNearestCity(lat: Double, lng: Double) async throws -> Components.Schemas.NearestCityResponse {
 		let response = try await client.getNearestCity(query: .init(

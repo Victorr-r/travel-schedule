@@ -1,14 +1,7 @@
 import Foundation
 import OpenAPIRuntime
 
-final class StationScheduleService {
-	private let client: Client
-	private let apikey: String
-	
-	init(client: Client, apikey: String) {
-		self.client = client
-		self.apikey = apikey
-	}
+final class StationScheduleService: BaseYandexService {
 	
 	func fetchStationSchedule(stationCode: String, date: String? = nil) async throws -> Components.Schemas.ScheduleResponse {
 		

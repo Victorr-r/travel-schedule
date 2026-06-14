@@ -1,14 +1,7 @@
 import Foundation
 import OpenAPIRuntime
 
-final class ThreadRouteService {
-	private let client: Client
-	private let apikey: String
-	
-	init(client: Client, apikey: String) {
-		self.client = client
-		self.apikey = apikey
-	}
+final class ThreadRouteService: BaseYandexService {
 	
 	func fetchThreadRoute(threadUID: String) async throws -> Components.Schemas.ThreadStationsResponse {
 		let response = try await client.getRouteStations(query: .init(

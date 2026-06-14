@@ -1,3 +1,4 @@
+import Foundation
 import OpenAPIRuntime
 import OpenAPIURLSession
 
@@ -7,14 +8,7 @@ protocol NearestStationsServiceProtocol {
 	func getNearestStations(lat: Double, lng: Double, distance: Int) async throws -> NearestStations
 }
 
-final class NearestStationsService: NearestStationsServiceProtocol {
-	private let client: Client
-	private let apikey: String
-	
-	init(client: Client, apikey: String) {
-		self.client = client
-		self.apikey = apikey
-	}
+final class NearestStationsService:BaseYandexService, NearestStationsServiceProtocol {
 	
 	func getNearestStations(lat: Double, lng: Double, distance: Int) async throws -> NearestStations {
 		let response = try await client.getNearestStations(query: .init(

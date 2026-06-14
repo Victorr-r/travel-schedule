@@ -10,24 +10,17 @@ final class AllStationsListService: BaseYandexService {
 		
 		switch response {
 		case .ok(let successResponse):
-			let mirror = Mirror(reflecting: successResponse.body)
-			guard let associatedBody = mirror.children.first?.value as? HTTPBody else {
-				throw NSError(
-					domain: "AllStationsListService",
-					code: 402,
-					userInfo: [NSLocalizedDescriptionKey: "Не удалось извлечь поток данных ответа Яндекса"]
+			switch successResponse.body {
+			case .html(let htmlBody):
+				let limit = 50 * 1024 * 1024
+				let fullData = try await Data(collecting: htmlBody, upTo: limit)
+				
+				let allStations = try JSONDecoder().decode(
+					Components.Schemas.AllStationsResponse.self,
+					from: fullData
 				)
+				return allStations
 			}
-			
-			let limit = 50 * 1024 * 1024
-			let fullData = try await Data(collecting: associatedBody, upTo: limit)
-			
-			let allStations = try JSONDecoder().decode(
-				Components.Schemas.AllStationsResponse.self,
-				from: fullData
-			)
-			
-			return allStations
 			
 		default:
 			throw NSError(

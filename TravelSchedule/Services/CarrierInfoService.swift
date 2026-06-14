@@ -16,7 +16,7 @@ final class CarrierInfoService: BaseYandexService {
 				return carrierData
 			}
 		case .undocumented(statusCode: let code, _):
-			throw NSError(domain: "CarrierInfoService", code: code, userInfo: [NSLocalizedDescriptionKey: "Неожиданный ответ сервера: \(code)"])
+			throw APIError.invalidResponse
 		}
 	}
 }

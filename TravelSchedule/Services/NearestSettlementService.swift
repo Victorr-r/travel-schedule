@@ -17,7 +17,7 @@ final class NearestSettlementService: BaseYandexService {
 				return cityData
 			}
 		default:
-			throw NSError(domain: "NearestSettlementService", code: 400, userInfo: [NSLocalizedDescriptionKey: "Ошибка определения ближайшего города"])
+			throw APIError.invalidResponse
 		}
 	}
 }

@@ -23,11 +23,7 @@ final class AllStationsListService: BaseYandexService {
 			}
 			
 		default:
-			throw NSError(
-				domain: "AllStationsListService",
-				code: 400,
-				userInfo: [NSLocalizedDescriptionKey: "Ошибка скачивания базы станций Яндекса"]
-			)
+			throw APIError.invalidResponse
 		}
 	}
 }

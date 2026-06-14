@@ -16,7 +16,7 @@ final class ThreadRouteService: BaseYandexService {
 				return threadData
 			}
 		default:
-			throw NSError(domain: "ThreadRouteService", code: 400, userInfo: [NSLocalizedDescriptionKey: "Ошибка получения станций нитки"])
+			throw APIError.invalidResponse
 		}
 	}
 }

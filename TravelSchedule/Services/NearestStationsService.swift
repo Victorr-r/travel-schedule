@@ -18,7 +18,14 @@ final class NearestStationsService:BaseYandexService, NearestStationsServiceProt
 			distance: distance
 		))
 		
-		
-		return try response.ok.body.json
+		switch response {
+		case .ok(let successResponse):
+			switch successResponse.body {
+			case .json(let stationsData):
+				return stationsData
+			}
+		default:
+			throw APIError.invalidResponse
+		}
 	}
 }

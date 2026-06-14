@@ -18,11 +18,7 @@ final class StationScheduleService: BaseYandexService {
 				return scheduleData
 			}
 		default:
-			throw NSError(
-				domain: "StationScheduleService",
-				code: 400,
-				userInfo: [NSLocalizedDescriptionKey: "Неожиданный ответ сервера Яндекса при запросе расписания по станции"]
-			)
+			throw APIError.invalidResponse
 		}
 	}
 }

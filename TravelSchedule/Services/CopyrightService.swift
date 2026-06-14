@@ -16,7 +16,7 @@ final class CopyrightService: BaseYandexService {
 				return copyrightData
 			}
 		default:
-			throw NSError(domain: "CopyrightService", code: 400, userInfo: [NSLocalizedDescriptionKey: "Ошибка получения копирайта"])
+			throw APIError.invalidResponse
 		}
 	}
 }

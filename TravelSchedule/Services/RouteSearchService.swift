@@ -19,11 +19,7 @@ final class RouteSearchService: BaseYandexService {
 				return searchData
 			}
 		default:
-			throw NSError(
-				domain: "RouteSearchService",
-				code: 400,
-				userInfo: [NSLocalizedDescriptionKey: "Неожиданный ответ сервера Яндекса"]
-			)
+			throw APIError.invalidResponse
 		}
 	}
 }

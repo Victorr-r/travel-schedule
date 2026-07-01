@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CitiesListView: View {
 	@Environment(\.dismiss) private var dismiss
-	@Binding var selectedCity: String
+	@Binding var selectedFinalDestination: String
 	@State private var searchString = ""
 	
 	let cities = [
@@ -26,35 +26,60 @@ struct CitiesListView: View {
 	var body: some View {
 		NavigationStack {
 			ZStack {
-				Color.white
+				Color("YP White")
 					.ignoresSafeArea()
 				
 				VStack(spacing: 0) {
-					HStack(spacing: 0) {
-						HStack(spacing: 8) {
-							Image(systemName: "magnifyingglass")
-								.font(.system(size: 17))
-								.foregroundColor(.gray)
+					VStack(spacing: 0) {
+						HStack(spacing: 0) {
+							Button(action: { dismiss() }) {
+								Image(systemName: "chevron.left")
+									.font(.system(size: 17, weight: .bold))
+									.foregroundColor(Color("YP Black"))
+							}
 							
-							TextField("Введите запрос", text: $searchString)
-								.font(.system(size: 17))
+							Spacer()
+							
+							Text("Выбор города")
+								.font(.system(size: 17, weight: .bold))
 								.foregroundColor(Color("YP Black"))
 							
-							if !searchString.isEmpty {
-								Button(action: { searchString = "" }) {
-									Image(systemName: "xmark.circle.fill")
-										.font(.system(size: 17))
-										.foregroundColor(.gray)
+							Spacer()
+							
+							Image(systemName: "chevron.left")
+								.font(.system(size: 17, weight: .bold))
+								.opacity(0)
+						}
+						.padding(.horizontal, 36)
+						.padding(.top, 11)
+						.padding(.bottom, 11)
+						
+						HStack(spacing: 0) {
+							HStack(spacing: 8) {
+								Image(systemName: "magnifyingglass")
+									.font(.system(size: 17))
+									.foregroundColor(.gray)
+								
+								TextField("Введите запрос", text: $searchString)
+									.font(.system(size: 17))
+									.foregroundColor(Color("YP Black"))
+								
+								if !searchString.isEmpty {
+									Button(action: { searchString = "" }) {
+										Image(systemName: "xmark.circle.fill")
+											.font(.system(size: 17))
+											.foregroundColor(.gray)
+									}
 								}
 							}
+							.padding(.horizontal, 12)
+							.frame(height: 36)
+							.background(Color("YP LightGray"))
+							.cornerRadius(10)
 						}
-						.padding(.horizontal, 12)
-						.frame(height: 36)
-						.background(Color(.systemGray6))
-						.cornerRadius(10)
+						.padding(.horizontal, 16)
+						.padding(.bottom, 8)
 					}
-					.padding(.horizontal, 16)
-					.padding(.vertical, 8)
 					
 					if searchResults.isEmpty {
 						Spacer()
@@ -64,45 +89,39 @@ struct CitiesListView: View {
 							.multilineTextAlignment(.center)
 						Spacer()
 					} else {
-						List(searchResults, id: \.self) { city in
-							Button(action: {
-								selectedCity = city
-								dismiss()
-							}) {
-								HStack {
-									Text(city)
-										.font(.system(size: 17, weight: .regular))
-										.foregroundColor(Color("YP Black"))
-									Spacer()
-									Image(systemName: "chevron.right")
-										.font(.system(size: 14, weight: .semibold))
-										.foregroundColor(Color("YP Black"))
+						ScrollView(.vertical, showsIndicators: false) {
+							LazyVStack(spacing: 4) {
+								ForEach(searchResults, id: \.self) { city in
+									NavigationLink(destination: StationsListView(chosenCity: city, selectedFinalDestination: $selectedFinalDestination, onStationSelected: {
+										dismiss()
+									})) {
+										HStack(spacing: 0) {
+											Text(city)
+												.font(.system(size: 17, weight: .regular))
+												.foregroundColor(Color("YP Black"))
+											
+											Spacer()
+											
+											Image(systemName: "chevron.right")
+												.font(.system(size: 14, weight: .semibold))
+												.foregroundColor(Color("YP Black"))
+										}
+										.padding(.horizontal, 16)
+										.frame(maxWidth: .infinity)
+										.frame(height: 60)
+										.background(Color("YP White"))
+									}
 								}
-								.padding(.vertical, 8)
 							}
-							.listRowBackground(Color.clear)
-							.listRowSeparatorTint(Color.gray.opacity(0.2))
+							.padding(.top, 4)
 						}
-						.listStyle(.plain)
-					}
-				}
-			}
-			.navigationTitle("Выбор города")
-			.navigationBarTitleDisplayMode(.inline)
-			.toolbar {
-				ToolbarItem(placement: .navigationBarLeading) {
-					Button(action: { dismiss() }) {
-						Image(systemName: "chevron.left")
-							.font(.system(size: 17, weight: .bold))
-							.foregroundColor(Color("YP Black"))
 					}
 				}
 			}
 		}
-		.preferredColorScheme(.light)
 	}
 }
 
 #Preview {
-	CitiesListView(selectedCity: .constant("Москва"))
+	CitiesListView(selectedFinalDestination: .constant("Москва"))
 }

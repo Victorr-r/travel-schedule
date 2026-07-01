@@ -103,12 +103,10 @@ struct FiltersListView: View {
 				if isCheckbox {
 					Image(systemName: isSelected.wrappedValue ? "checkmark.square.fill" : "square")
 						.font(.system(size: 22))
-						// Заменили YP Blue на YP Black для активного состояния чекбокса
 						.foregroundColor(Color("YP Black"))
 				} else {
 					Image(systemName: isSelected.wrappedValue ? "largecircle.fill.circle" : "circle")
 						.font(.system(size: 22))
-						// Заменили YP Blue на YP Black для активного состояния радио-кнопки
 						.foregroundColor(Color("YP Black"))
 				}
 			}

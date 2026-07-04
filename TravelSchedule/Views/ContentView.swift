@@ -7,13 +7,13 @@ struct ContentView: View {
 	@State private var showDepartureSelection = false
 	@State private var showArrivalSelection = false
 	
-	@ObservedObject private var errorSimulator = NetworkErrorSimulator()
+	@StateObject private var errorSimulator = NetworkErrorSimulator()
 	
 	var body: some View {
 		TabView(selection: $selectedTab) {
 			NavigationStack {
 				ZStack {
-					Color("YP White")
+					Color(.ypWhite)
 						.ignoresSafeArea()
 					
 					if let error = errorSimulator.activeError {
@@ -46,7 +46,7 @@ struct ContentView: View {
 										HStack {
 											Text(departureStation.isEmpty ? "Откуда" : departureStation)
 												.font(.system(size: 17, weight: .regular))
-												.foregroundColor(departureStation.isEmpty ? Color(.systemGray) : Color("YP Black"))
+												.foregroundColor(departureStation.isEmpty ? Color(.systemGray) : Color(.ypBlack))
 												.lineLimit(1)
 												.truncationMode(.tail)
 											Spacer()
@@ -59,7 +59,7 @@ struct ContentView: View {
 										HStack {
 											Text(arrivalStation.isEmpty ? "Куда" : arrivalStation)
 												.font(.system(size: 17, weight: .regular))
-												.foregroundColor(arrivalStation.isEmpty ? Color(.systemGray) : Color("YP Black"))
+												.foregroundColor(arrivalStation.isEmpty ? Color(.systemGray) : Color(.ypBlack))
 												.lineLimit(1)
 												.truncationMode(.tail)
 											Spacer()
@@ -89,7 +89,7 @@ struct ContentView: View {
 								.padding(.trailing, 16)
 							}
 							.frame(maxWidth: .infinity)
-							.background(Color("YP Blue"))
+							.background(Color(.ypBlue))
 							.cornerRadius(20)
 							.padding(.horizontal, 16)
 							
@@ -101,7 +101,7 @@ struct ContentView: View {
 										.font(.system(size: 17, weight: .bold))
 										.foregroundColor(.white)
 										.frame(width: 150, height: 60)
-										.background(Color("YP Blue"))
+										.background(Color(.ypBlue))
 										.cornerRadius(16)
 								}
 								.padding(.top, 16)
@@ -127,7 +127,7 @@ struct ContentView: View {
 			VStack(spacing: 24) {
 				Text("Настройки симуляции сети")
 					.font(.system(size: 20, weight: .bold))
-					.foregroundColor(Color("YP Black"))
+					.foregroundColor(Color(.ypBlack))
 				
 				Button(action: { errorSimulator.activeError = nil }) {
 					Text("Всё ок (Сеть работает)")
@@ -135,7 +135,7 @@ struct ContentView: View {
 						.foregroundColor(.white)
 						.frame(maxWidth: .infinity)
 						.frame(height: 50)
-						.background(errorSimulator.activeError == nil ? Color("YP Blue") : Color.gray)
+						.background(errorSimulator.activeError == nil ? Color(.ypBlue) : Color.gray)
 						.cornerRadius(12)
 				}
 				
@@ -162,15 +162,15 @@ struct ContentView: View {
 			}
 			.padding(.horizontal, 16)
 			.padding(.top, 40)
-			.background(Color("YP White").ignoresSafeArea())
+			.background(Color(.ypWhite).ignoresSafeArea())
 			.tabItem {
 				Image("icSettings")
 					.renderingMode(.template)
 			}
 			.tag(1)
 		}
-		.tint(Color("YP Black"))
-		.toolbarBackground(Color("YP White"), for: .tabBar)
+		.tint(Color(.ypBlack))
+		.toolbarBackground(Color(.ypWhite), for: .tabBar)
 		.toolbarBackground(.visible, for: .tabBar)
 	}
 }

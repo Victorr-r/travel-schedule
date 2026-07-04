@@ -13,7 +13,7 @@ struct FiltersListView: View {
 	
 	var body: some View {
 		ZStack(alignment: .bottom) {
-			Color("YP White")
+			Color(.ypWhite)
 				.ignoresSafeArea()
 			
 			VStack(spacing: 0) {
@@ -22,7 +22,7 @@ struct FiltersListView: View {
 						Button(action: { dismiss() }) {
 							Image(systemName: "chevron.left")
 								.font(.system(size: 17, weight: .bold))
-								.foregroundColor(Color("YP Black"))
+								.foregroundColor(Color(.ypBlack))
 						}
 						Spacer()
 					}
@@ -35,7 +35,7 @@ struct FiltersListView: View {
 					VStack(alignment: .leading, spacing: 0) {
 						Text("Время отправления")
 							.font(.system(size: 24, weight: .bold))
-							.foregroundColor(Color("YP Black"))
+							.foregroundColor(Color(.ypBlack))
 							.padding(.horizontal, 16)
 							.padding(.top, 16)
 							.padding(.bottom, 8)
@@ -47,7 +47,7 @@ struct FiltersListView: View {
 						
 						Text("Показывать варианты с пересадками")
 							.font(.system(size: 24, weight: .bold))
-							.foregroundColor(Color("YP Black"))
+							.foregroundColor(Color(.ypBlack))
 							.padding(.horizontal, 16)
 							.padding(.top, 24)
 							.padding(.bottom, 8)
@@ -68,7 +68,7 @@ struct FiltersListView: View {
 						.foregroundColor(.white)
 						.frame(maxWidth: .infinity)
 						.frame(height: 60)
-						.background(Color("YP Blue"))
+						.background(Color(.ypBlue))
 						.cornerRadius(16)
 				}
 				.padding(.horizontal, 16)
@@ -96,24 +96,24 @@ struct FiltersListView: View {
 			HStack(spacing: 0) {
 				Text(title)
 					.font(.system(size: 17, weight: .regular))
-					.foregroundColor(Color("YP Black"))
+					.foregroundColor(Color(.ypBlack))
 				
 				Spacer()
 				
 				if isCheckbox {
 					Image(systemName: isSelected.wrappedValue ? "checkmark.square.fill" : "square")
 						.font(.system(size: 22))
-						.foregroundColor(Color("YP Black"))
+						.foregroundColor(Color(.ypBlack))
 				} else {
 					Image(systemName: isSelected.wrappedValue ? "largecircle.fill.circle" : "circle")
 						.font(.system(size: 22))
-						.foregroundColor(Color("YP Black"))
+						.foregroundColor(Color(.ypBlack))
 				}
 			}
 			.padding(.horizontal, 16)
 			.frame(maxWidth: .infinity)
 			.frame(height: 60)
-			.background(Color("YP White"))
+			.background(Color(.ypWhite))
 		}
 	}
 }

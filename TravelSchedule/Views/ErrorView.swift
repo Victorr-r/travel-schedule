@@ -6,7 +6,7 @@ struct ErrorView: View {
 	
 	var body: some View {
 		ZStack {
-			Color("YP White")
+			Color(.ypWhite)
 				.ignoresSafeArea()
 			
 			VStack(spacing: 16) {
@@ -17,7 +17,7 @@ struct ErrorView: View {
 				
 				Text(title)
 					.font(.system(size: 24, weight: .bold))
-					.foregroundColor(Color("YP Black"))
+					.foregroundColor(Color(.ypBlack))
 					.multilineTextAlignment(.center)
 					.padding(.horizontal, 16)
 			}

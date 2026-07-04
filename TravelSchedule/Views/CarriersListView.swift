@@ -25,7 +25,7 @@ struct CarriersListView: View {
 	
 	var body: some View {
 		ZStack(alignment: .bottom) {
-			Color("YP White")
+			Color(.ypWhite)
 				.ignoresSafeArea()
 			
 			if carriers.isEmpty {
@@ -33,7 +33,7 @@ struct CarriersListView: View {
 					Spacer()
 					Text("Вариантов нет")
 						.font(.system(size: 24, weight: .bold))
-						.foregroundColor(Color("YP Black"))
+						.foregroundColor(Color(.ypBlack))
 					Spacer()
 				}
 			} else {
@@ -43,7 +43,7 @@ struct CarriersListView: View {
 							Button(action: { dismiss() }) {
 								Image(systemName: "chevron.left")
 									.font(.system(size: 17, weight: .bold))
-									.foregroundColor(Color("YP Black"))
+									.foregroundColor(Color(.ypBlack))
 							}
 							Spacer()
 						}
@@ -55,7 +55,7 @@ struct CarriersListView: View {
 					HStack(spacing: 0) {
 						Text(directionTitle)
 							.font(.system(size: 24, weight: .bold))
-							.foregroundColor(Color("YP Black"))
+							.foregroundColor(Color(.ypBlack))
 							.multilineTextAlignment(.leading)
 							.lineLimit(3)
 						Spacer()
@@ -78,7 +78,7 @@ struct CarriersListView: View {
 											VStack(alignment: .leading, spacing: 2) {
 												Text(carrier.title)
 													.font(.system(size: 17, weight: .regular))
-													.foregroundColor(Color("YP Black"))
+													.foregroundColor(Color(.ypBlack))
 												
 												if let transfer = carrier.transferInfo {
 													Text(transfer)
@@ -92,7 +92,7 @@ struct CarriersListView: View {
 										
 										Text(carrier.dateInfo)
 											.font(.system(size: 12, weight: .regular))
-											.foregroundColor(Color("YP Black"))
+											.foregroundColor(Color(.ypBlack))
 											.padding(.top, 2)
 									}
 									.padding(.top, 14)
@@ -103,16 +103,16 @@ struct CarriersListView: View {
 									HStack(spacing: 0) {
 										Text(carrier.departureTime)
 											.font(.system(size: 17, weight: .regular))
-											.foregroundColor(Color("YP Black"))
+											.foregroundColor(Color(.ypBlack))
 										
 										ZStack {
 											Rectangle()
-												.fill(Color("YP Black").opacity(0.15))
+												.fill(Color(.ypBlack).opacity(0.15))
 												.frame(height: 1)
 											
 											Text(carrier.duration)
 												.font(.system(size: 12, weight: .regular))
-												.foregroundColor(Color("YP Black"))
+												.foregroundColor(Color(.ypBlack))
 												.padding(.horizontal, 4)
 												.background(Color(red: 246 / 255.0, green: 246 / 255.0, blue: 246 / 255.0))
 										}
@@ -120,7 +120,7 @@ struct CarriersListView: View {
 										
 										Text(carrier.arrivalTime)
 											.font(.system(size: 17, weight: .regular))
-											.foregroundColor(Color("YP Black"))
+											.foregroundColor(Color(.ypBlack))
 									}
 									.padding(.bottom, 14)
 									.padding(.horizontal, 14)
@@ -147,7 +147,7 @@ struct CarriersListView: View {
 					.foregroundColor(.white)
 					.frame(maxWidth: .infinity)
 					.frame(height: 60)
-					.background(Color("YP Blue"))
+					.background(Color(.ypBlue))
 					.cornerRadius(16)
 			}
 			.padding(.horizontal, 16)

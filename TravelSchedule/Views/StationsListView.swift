@@ -26,7 +26,7 @@ struct StationsListView: View {
 	
 	var body: some View {
 		ZStack {
-			Color("YP White")
+			Color(.ypWhite)
 				.ignoresSafeArea()
 			
 			VStack(spacing: 0) {
@@ -35,14 +35,14 @@ struct StationsListView: View {
 						Button(action: { dismiss() }) {
 							Image(systemName: "chevron.left")
 								.font(.system(size: 17, weight: .bold))
-								.foregroundColor(Color("YP Black"))
+								.foregroundColor(Color(.ypBlack))
 						}
 						
 						Spacer()
 						
 						Text("Выбор станции")
 							.font(.system(size: 17, weight: .bold))
-							.foregroundColor(Color("YP Black"))
+							.foregroundColor(Color(.ypBlack))
 						
 						Spacer()
 						
@@ -62,7 +62,7 @@ struct StationsListView: View {
 							
 							TextField("Введите запрос", text: $searchString)
 								.font(.system(size: 17))
-								.foregroundColor(Color("YP Black"))
+								.foregroundColor(Color(.ypBlack))
 							
 							if !searchString.isEmpty {
 								Button(action: { searchString = "" }) {
@@ -74,7 +74,7 @@ struct StationsListView: View {
 						}
 						.padding(.horizontal, 12)
 						.frame(height: 36)
-						.background(Color("YP LightGray"))
+						.background(Color(.ypLightGray))
 						.cornerRadius(10)
 					}
 					.padding(.horizontal, 16)
@@ -85,7 +85,7 @@ struct StationsListView: View {
 					Spacer()
 					Text("Станция не найдена")
 						.font(.system(size: 24, weight: .bold))
-						.foregroundColor(Color("YP Black"))
+						.foregroundColor(Color(.ypBlack))
 						.multilineTextAlignment(.center)
 					Spacer()
 				} else {
@@ -99,18 +99,18 @@ struct StationsListView: View {
 									HStack(spacing: 0) {
 										Text(station)
 											.font(.system(size: 17, weight: .regular))
-											.foregroundColor(Color("YP Black"))
+											.foregroundColor(Color(.ypBlack))
 										
 										Spacer()
 										
 										Image(systemName: "chevron.right")
 											.font(.system(size: 14, weight: .semibold))
-											.foregroundColor(Color("YP Black"))
+											.foregroundColor(Color(.ypBlack))
 									}
 									.padding(.horizontal, 16)
 									.frame(maxWidth: .infinity)
 									.frame(height: 60)
-									.background(Color("YP White"))
+									.background(Color(.ypWhite))
 								}
 							}
 						}

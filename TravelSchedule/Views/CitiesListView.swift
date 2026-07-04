@@ -16,11 +16,7 @@ struct CitiesListView: View {
 	]
 	
 	var searchResults: [String] {
-		if searchString.isEmpty {
-			return cities
-		} else {
-			return cities.filter { $0.localizedCaseInsensitiveContains(searchString) }
-		}
+		searchString.isEmpty ? cities : cities.filter { $0.localizedCaseInsensitiveContains(searchString) }
 	}
 	
 	var body: some View {

@@ -7,7 +7,7 @@ struct ContentView: View {
 	@State private var showDepartureSelection = false
 	@State private var showArrivalSelection = false
 	
-	@ObservedObject private var errorSimulator = NetworkErrorSimulator.shared
+	@ObservedObject private var errorSimulator = NetworkErrorSimulator()
 	
 	var body: some View {
 		TabView(selection: $selectedTab) {

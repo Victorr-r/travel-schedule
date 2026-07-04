@@ -2,14 +2,12 @@ import Foundation
 import Combine
 
 final class NetworkErrorSimulator: ObservableObject {
-	static let shared = NetworkErrorSimulator()
-	
-	@Published var activeError: ErrorType? = nil
+	@Published var activeError: ErrorType?
 	
 	enum ErrorType {
 		case server
 		case noInternet
 	}
 	
-	private init() {}
+	init() {}
 }

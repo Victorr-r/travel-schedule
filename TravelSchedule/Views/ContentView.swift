@@ -72,8 +72,7 @@ struct ContentView: View {
 								.cornerRadius(12)
 								.environment(\.colorScheme, .light)
 								.padding(.leading, 16)
-								.padding(.top, 16)
-								.padding(.bottom, 16)
+								.padding(.vertical, 16)
 								.padding(.trailing, 68)
 								
 								Button(action: {

@@ -2,7 +2,7 @@ import Foundation
 import OpenAPIRuntime
 
 final class CarrierInfoService: BaseYandexService {
-
+	
 	func fetchCarrierInfo(code: String) async throws -> Components.Schemas.CarrierResponse {
 		let response = try await client.getCarrierInfo(query: .init(
 			apikey: apikey,
@@ -15,7 +15,7 @@ final class CarrierInfoService: BaseYandexService {
 			case .json(let carrierData):
 				return carrierData
 			}
-		case .undocumented(statusCode: let code, _):
+		case .undocumented(statusCode: _, _):
 			throw APIError.invalidResponse
 		}
 	}

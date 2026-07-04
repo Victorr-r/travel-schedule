@@ -95,8 +95,7 @@ struct CarriersListView: View {
 											.foregroundColor(Color(.ypBlack))
 											.padding(.top, 2)
 									}
-									.padding(.top, 14)
-									.padding(.horizontal, 14)
+									.padding([.top, .horizontal], 14)
 									
 									Spacer(minLength: 0)
 									
@@ -122,8 +121,7 @@ struct CarriersListView: View {
 											.font(.system(size: 17, weight: .regular))
 											.foregroundColor(Color(.ypBlack))
 									}
-									.padding(.bottom, 14)
-									.padding(.horizontal, 14)
+									.padding([.bottom, .horizontal], 14)
 								}
 								.frame(maxWidth: .infinity)
 								.frame(height: 104)

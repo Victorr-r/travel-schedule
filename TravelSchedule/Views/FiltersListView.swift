@@ -82,13 +82,9 @@ struct FiltersListView: View {
 	private func filterRow(title: String, isSelected: Binding<Bool>, isCheckbox: Bool) -> some View {
 		Button(action: {
 			if !isCheckbox {
-				if title == "Да" {
-					allowTransfers = true
-					noTransfers = false
-				} else {
-					allowTransfers = false
-					noTransfers = true
-				}
+				let isSelected: Bool = title == "Да"
+				allowTransfers = isSelected
+				noTransfers = !isSelected
 			} else {
 				isSelected.wrappedValue.toggle()
 			}

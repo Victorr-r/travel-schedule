@@ -26,6 +26,10 @@ struct StoriesView: View {
 		stories.firstIndex(where: { $0.id == currentTabID }) ?? 0
 	}
 	
+	private var currentStory: Story {
+		stories[currentStoryIndex]
+	}
+	
 	init(stories: Binding<[Story]>, isPresented: Binding<Bool>, startStoryID: UUID?) {
 		self._stories = stories
 		self._isPresented = isPresented
@@ -42,51 +46,37 @@ struct StoriesView: View {
 	}
 	
 	var body: some View {
-		ZStack(alignment: .topTrailing) {
+		ZStack(alignment: .bottomLeading) {
 			TabView(selection: $currentTabID) {
 				ForEach(stories) { story in
-					ZStack {
-						storyContent(for: story)
-						
-						VStack {
-							Spacer()
-							VStack(alignment: .leading, spacing: 10) {
-								Text(story.title)
-									.font(.system(size: 34, weight: .bold))
-								
-								Text(story.description)
-									.font(.system(size: 20, weight: .regular))
-									.lineLimit(3)
-							}
-							.foregroundColor(.white)
-							.padding(.horizontal, 16)
-							.padding(.bottom, 40)
-						}
-					}
-					.tag(story.id)
-					.contentShape(Rectangle())
-					.onTapGesture {
-						nextStory()
-						resetTimer()
-					}
+					storyContent(for: story)
+						.tag(story.id)
 				}
 			}
 			.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
 			.ignoresSafeArea()
-			.onChange(of: currentTabID) { oldValue, newValue in
-				markAsWatched(id: newValue)
-				let index = stories.firstIndex(where: { $0.id == newValue }) ?? 0
-				progress = CGFloat(index) / CGFloat(stories.count)
-				resetTimer()
+			
+			VStack(alignment: .leading, spacing: 10) {
+				Text(currentStory.title)
+					.font(.system(size: 34, weight: .bold))
+					.foregroundColor(.white)
+				
+				Text(currentStory.description)
+					.font(.system(size: 20, weight: .regular))
+					.foregroundColor(.white)
+					.lineLimit(3)
+					.multilineTextAlignment(.leading)
 			}
+			.padding(.horizontal, 16)
+			.padding(.bottom, 24)
 			
 			VStack(spacing: 0) {
-				ProgressBar(numberOfSections: stories.count, progress: progress)
-					.frame(height: 6)
-					.padding(.init(top: 28, leading: 12, bottom: 12, trailing: 12))
-				
-				HStack {
-					Spacer()
+				ZStack(alignment: .topTrailing) {
+					ProgressBar(numberOfSections: stories.count, progress: progress)
+						.frame(width: 351, height: 6)
+						.padding(.top, 35)
+						.padding(.horizontal, 12)
+					
 					Button(action: {
 						isPresented = false
 					}) {
@@ -95,11 +85,27 @@ struct StoriesView: View {
 							.foregroundStyle(.white, Color(red: 26/255, green: 27/255, blue: 34/255))
 					}
 					.padding(.trailing, 12)
-					.padding(.top, 12)
+					.padding(.top, 57)
 				}
+				.frame(width: 375, height: 100)
+				.padding(.top, 7)
+				
+				Spacer()
 			}
+			.ignoresSafeArea()
+		}
+		.contentShape(Rectangle())
+		.onTapGesture {
+			nextStory()
+			resetTimer()
 		}
 		.preferredColorScheme(isDarkMode ? .dark : .light)
+		.onChange(of: currentTabID) { oldValue, newValue in
+			markAsWatched(id: newValue)
+			let index = stories.firstIndex(where: { $0.id == newValue }) ?? 0
+			progress = CGFloat(index) / CGFloat(stories.count)
+			resetTimer()
+		}
 		.onAppear {
 			markAsWatched(id: currentTabID)
 			timer = Timer.publish(every: configuration.timerTickInterval, on: .main, in: .common)

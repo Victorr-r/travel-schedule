@@ -5,7 +5,7 @@ struct CarrierDetailView: View {
 	@Environment(\.dismiss) private var dismiss
 	
 	var body: some View {
-		ZStack {
+		ZStack(alignment: .bottom) {
 			Color(.ypWhite)
 				.ignoresSafeArea()
 			
@@ -65,7 +65,7 @@ struct CarrierDetailView: View {
 							.frame(height: 60)
 							
 							VStack(alignment: .leading, spacing: 4) {
-								Text("Телефон")
+								Text("Telephone")
 									.font(.system(size: 17, weight: .regular))
 									.foregroundColor(Color(.ypBlack))
 									.frame(height: 22)
@@ -80,8 +80,23 @@ struct CarrierDetailView: View {
 						}
 						.padding(.top, 16)
 					}
+					.padding(.bottom, 140)
 				}
 			}
+			
+			Button(action: {
+				print("Уточнить время для \(carrier.title)")
+			}) {
+				Text("Уточнить время")
+					.font(.system(size: 17, weight: .bold))
+					.foregroundColor(.white)
+					.frame(maxWidth: .infinity)
+					.frame(height: 60)
+					.background(Color(.ypBlue))
+					.cornerRadius(16)
+			}
+			.padding(.horizontal, 16)
+			.padding(.bottom, 24)
 		}
 		.navigationBarHidden(true)
 	}

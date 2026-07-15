@@ -15,28 +15,28 @@ extension Story {
 			previewImage: "Stories1",
 			backgroundColor: Color(red: 232.0/255.0, green: 232.0/255.0, blue: 255.0/255.0),
 			title: "🚂 Экспрессы",
-			description: "Запускаем новые скоростные поезда между Москвой и Санкт-Петербургом со следующей недели.",
+			description: "Новые скоростные поезда между Москвой и Питером со следующей недели.",
 			isWatched: false
 		),
 		Story(
 			previewImage: "Stories2",
 			backgroundColor: Color.purple.opacity(0.8),
 			title: "🎫 Кешбэк 10%",
-			description: "Покупайте билеты через приложение и получайте повышенный кешбэк на поездки по выходным.",
+			description: "Покупайте билеты в приложении и получайте кешбэк на поездки.",
 			isWatched: false
 		),
 		Story(
 			previewImage: "Stories3",
 			backgroundColor: Color.orange.opacity(0.8),
-			title: "⚠️ Изменения",
-			description: "Обратите внимание на обновление расписания пригородных электричек Ярославского направления.",
+			title: "⚠️ Расписание",
+			description: "Обновление графика электричек на Ярославском направлении.",
 			isWatched: false
 		),
 		Story(
 			previewImage: "Stories4",
 			backgroundColor: Color.teal.opacity(0.8),
 			title: "🌍 Новые города",
-			description: "Теперь в поиске доступны автобусные маршруты по всей Ленинградской и Московской областям.",
+			description: "В поиске стали доступны автобусные маршруты по всей области.",
 			isWatched: false
 		)
 	]

@@ -7,6 +7,9 @@ struct ContentView: View {
 	@State private var arrivalStation = ""
 	@State private var showDepartureSelection = false
 	@State private var showArrivalSelection = false
+	@State private var showStories = false
+	@State private var storiesList = Story.allStories
+	@State private var selectedStoryID: UUID? = nil
 	
 	@StateObject private var errorSimulator = NetworkErrorSimulator()
 	
@@ -40,20 +43,32 @@ struct ContentView: View {
 							VStack(spacing: 0) {
 								ScrollView(.horizontal, showsIndicators: false) {
 									HStack(spacing: 12) {
-										let storiesImages = ["Stories1", "Stories2", "Stories3", "Stories4"]
-										ForEach(storiesImages, id: \.self) { imageName in
-											Image(imageName)
-												.resizable()
-												.scaledToFill()
-												.frame(width: 92, height: 140)
-												.clipShape(RoundedRectangle(cornerRadius: 16))
+										ForEach(storiesList) { story in
+											Button(action: {
+												selectedStoryID = story.id
+												showStories = true
+											}) {
+												Image(story.previewImage)
+													.resizable()
+													.scaledToFill()
+													.frame(width: 92, height: 140)
+													.opacity(story.isWatched ? 0.5 : 1.0)
+													.clipShape(RoundedRectangle(cornerRadius: 16))
+													.overlay(
+														RoundedRectangle(cornerRadius: 16)
+															.stroke(Color(.ypBlue), lineWidth: story.isWatched ? 0 : 4)
+													)
+											}
+											.buttonStyle(PlainButtonStyle())
 										}
 									}
-									.padding(.leading, 16)
-									.padding(.trailing, 16)
+									.padding(.horizontal, 16)
 								}
 								.padding(.top, 24)
 								.padding(.bottom, 20)
+								.fullScreenCover(isPresented: $showStories) {
+									StoriesView(stories: $storiesList, isPresented: $showStories, startStoryID: selectedStoryID)
+								}
 								
 								ZStack(alignment: .trailing) {
 									VStack(spacing: 0) {

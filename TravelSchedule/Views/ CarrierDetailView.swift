@@ -36,7 +36,7 @@ struct CarrierDetailView: View {
 							.frame(maxWidth: .infinity)
 							.frame(height: 104)
 							.background(Color.white)
-							.cornerRadius(24)
+							.clipShape(RoundedRectangle(cornerRadius: 24))
 							.padding(.horizontal, 16)
 							.padding(.top, 16)
 						
@@ -94,7 +94,7 @@ struct CarrierDetailView: View {
 					.frame(maxWidth: .infinity)
 					.frame(height: 60)
 					.background(Color(.ypBlue))
-					.cornerRadius(16)
+					.clipShape(RoundedRectangle(cornerRadius: 16))
 			}
 			.padding(.horizontal, 16)
 			.padding(.bottom, 24)

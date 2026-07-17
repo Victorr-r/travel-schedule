@@ -2,6 +2,7 @@ import SwiftUI
 
 @main
 struct TravelScheduleApp: App {
+	@AppStorage("isDarkMode") private var isDarkMode = false
 	@State private var isSplashActive = true
 	
 	var body: some Scene {
@@ -15,6 +16,7 @@ struct TravelScheduleApp: App {
 						.transition(.opacity)
 				}
 			}
+			.preferredColorScheme(isDarkMode ? .dark : .light)
 			.onAppear {
 				DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
 					withAnimation(.easeInOut(duration: 0.5)) {

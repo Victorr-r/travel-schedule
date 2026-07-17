@@ -97,10 +97,10 @@ struct FiltersListView: View {
 				Spacer()
 				
 				Image(systemName: isSelected.wrappedValue
-					? (isCheckbox ? "checkmark.square.fill" : "largecircle.fill.circle")
-					: (isCheckbox ? "square" : "circle"))
-					.font(.system(size: 22))
-					.foregroundColor(Color("YP Black"))
+					  ? (isCheckbox ? "checkmark.square.fill" : "largecircle.fill.circle")
+					  : (isCheckbox ? "square" : "circle"))
+				.font(.system(size: 22))
+				.foregroundColor(Color("YP Black"))
 			}
 			.padding(.horizontal, 16)
 			.frame(maxWidth: .infinity)

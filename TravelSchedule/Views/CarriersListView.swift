@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CarrierInfo: Identifiable {
+struct CarrierInfo: Identifiable, Hashable {
 	let id = UUID()
 	let logoName: String
 	let title: String
@@ -66,68 +66,71 @@ struct CarriersListView: View {
 					ScrollView(.vertical, showsIndicators: false) {
 						LazyVStack(spacing: 8) {
 							ForEach(carriers) { carrier in
-								VStack(spacing: 0) {
-									HStack(alignment: .top, spacing: 0) {
-										HStack(spacing: 8) {
-											Image(carrier.logoName)
-												.resizable()
-												.scaledToFill()
-												.frame(width: 38, height: 38)
-												.cornerRadius(12)
-											
-											VStack(alignment: .leading, spacing: 2) {
-												Text(carrier.title)
-													.font(.system(size: 17, weight: .regular))
-													.foregroundColor(Color(.ypBlack))
+								NavigationLink(destination: CarrierDetailView(carrier: carrier)) {
+									VStack(spacing: 0) {
+										HStack(alignment: .top, spacing: 0) {
+											HStack(spacing: 8) {
+												Image(carrier.logoName)
+													.resizable()
+													.scaledToFill()
+													.frame(width: 38, height: 38)
+													.cornerRadius(12)
 												
-												if let transfer = carrier.transferInfo {
-													Text(transfer)
-														.font(.system(size: 12, weight: .regular))
-														.foregroundColor(.red)
+												VStack(alignment: .leading, spacing: 2) {
+													Text(carrier.title)
+														.font(.system(size: 17, weight: .regular))
+														.foregroundColor(Color(.ypBlack))
+													
+													if let transfer = carrier.transferInfo {
+														Text(transfer)
+															.font(.system(size: 12, weight: .regular))
+															.foregroundColor(.red)
+													}
 												}
 											}
-										}
-										
-										Spacer()
-										
-										Text(carrier.dateInfo)
-											.font(.system(size: 12, weight: .regular))
-											.foregroundColor(Color(.ypBlack))
-											.padding(.top, 2)
-									}
-									.padding([.top, .horizontal], 14)
-									
-									Spacer(minLength: 0)
-									
-									HStack(spacing: 0) {
-										Text(carrier.departureTime)
-											.font(.system(size: 17, weight: .regular))
-											.foregroundColor(Color(.ypBlack))
-										
-										ZStack {
-											Rectangle()
-												.fill(Color(.ypBlack).opacity(0.15))
-												.frame(height: 1)
 											
-											Text(carrier.duration)
+											Spacer()
+											
+											Text(carrier.dateInfo)
 												.font(.system(size: 12, weight: .regular))
 												.foregroundColor(Color(.ypBlack))
-												.padding(.horizontal, 4)
-												.background(Color(red: 246 / 255.0, green: 246 / 255.0, blue: 246 / 255.0))
+												.padding(.top, 2)
 										}
-										.padding(.horizontal, 4)
+										.padding([.top, .horizontal], 14)
 										
-										Text(carrier.arrivalTime)
-											.font(.system(size: 17, weight: .regular))
-											.foregroundColor(Color(.ypBlack))
+										Spacer(minLength: 0)
+										
+										HStack(spacing: 0) {
+											Text(carrier.departureTime)
+												.font(.system(size: 17, weight: .regular))
+												.foregroundColor(Color(.ypBlack))
+											
+											ZStack {
+												Rectangle()
+													.fill(Color(.ypBlack).opacity(0.15))
+													.frame(height: 1)
+												
+												Text(carrier.duration)
+													.font(.system(size: 12, weight: .regular))
+													.foregroundColor(Color(.ypBlack))
+													.padding(.horizontal, 4)
+													.background(Color(red: 246 / 255.0, green: 246 / 255.0, blue: 246 / 255.0))
+											}
+											.padding(.horizontal, 4)
+											
+											Text(carrier.arrivalTime)
+												.font(.system(size: 17, weight: .regular))
+												.foregroundColor(Color(.ypBlack))
+										}
+										.padding([.bottom, .horizontal], 14)
 									}
-									.padding([.bottom, .horizontal], 14)
+									.frame(maxWidth: .infinity)
+									.frame(height: 104)
+									.background(Color(red: 246 / 255.0, green: 246 / 255.0, blue: 246 / 255.0))
+									.cornerRadius(24)
+									.environment(\.colorScheme, .light)
 								}
-								.frame(maxWidth: .infinity)
-								.frame(height: 104)
-								.background(Color(red: 246 / 255.0, green: 246 / 255.0, blue: 246 / 255.0))
-								.cornerRadius(24)
-								.environment(\.colorScheme, .light)
+								.buttonStyle(PlainButtonStyle())
 							}
 						}
 						.padding(.horizontal, 16)
@@ -159,5 +162,7 @@ struct CarriersListView: View {
 }
 
 #Preview {
-	CarriersListView(directionTitle: "Москва (Ярославский вокзал) ➔ Санкт-Петербург (Балтийский вокзал)")
+	NavigationStack {
+		CarriersListView(directionTitle: "Москва (Ярославский вокзал) ➔ Санкт-Петербург (Балтийский вокзал)")
+	}
 }

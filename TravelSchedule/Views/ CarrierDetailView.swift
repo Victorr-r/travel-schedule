@@ -5,7 +5,7 @@ struct CarrierDetailView: View {
 	@Environment(\.dismiss) private var dismiss
 	
 	var body: some View {
-		ZStack(alignment: .bottom) {
+		ZStack {
 			Color(.ypWhite)
 				.ignoresSafeArea()
 			
@@ -14,12 +14,12 @@ struct CarrierDetailView: View {
 					Button(action: { dismiss() }) {
 						Image(systemName: SFSymbols.chevronLeft)
 							.font(.system(size: 17, weight: .bold))
-							.foregroundColor(Color(.ypBlack))
+							.foregroundStyle(Color(.ypBlack))
 					}
 					Spacer()
 					Text("Информация о перевозчике")
 						.font(.system(size: 17, weight: .bold))
-						.foregroundColor(Color(.ypBlack))
+						.foregroundStyle(Color(.ypBlack))
 					Spacer()
 					Image(systemName: SFSymbols.chevronLeft)
 						.font(.system(size: 17, weight: .bold))
@@ -37,12 +37,13 @@ struct CarrierDetailView: View {
 							.frame(height: 104)
 							.background(Color.white)
 							.clipShape(RoundedRectangle(cornerRadius: 24))
-							.padding([.horizontal, .top], 16)
+							.padding(.horizontal, 16)
+							.padding(.top, 16)
 						
 						HStack {
 							Text("ОАО «\(carrier.title)»")
 								.font(.system(size: 24, weight: .bold))
-								.foregroundColor(Color(.ypBlack))
+								.foregroundStyle(Color(.ypBlack))
 							Spacer()
 						}
 						.padding(.top, 16)
@@ -52,7 +53,7 @@ struct CarrierDetailView: View {
 							VStack(alignment: .leading, spacing: 4) {
 								Text("E-mail")
 									.font(.system(size: 17, weight: .regular))
-									.foregroundColor(Color(.ypBlack))
+									.foregroundStyle(Color(.ypBlack))
 									.frame(height: 22)
 								
 								Text(verbatim: "i.lobanov@yandex.ru")
@@ -66,7 +67,7 @@ struct CarrierDetailView: View {
 							VStack(alignment: .leading, spacing: 4) {
 								Text("Telephone")
 									.font(.system(size: 17, weight: .regular))
-									.foregroundColor(Color(.ypBlack))
+									.foregroundStyle(Color(.ypBlack))
 									.frame(height: 22)
 								
 								Text("+7 (912) 345-67-89")
@@ -79,24 +80,9 @@ struct CarrierDetailView: View {
 						}
 						.padding(.top, 16)
 					}
-					.padding(.bottom, 140)
 				}
 				.scrollIndicators(.hidden)
 			}
-			
-			Button(action: {
-				print("Уточнить время для \(carrier.title)")
-			}) {
-				Text("Уточнить время")
-					.font(.system(size: 17, weight: .bold))
-					.foregroundColor(.white)
-					.frame(maxWidth: .infinity)
-					.frame(height: 60)
-					.background(Color(.ypBlue))
-					.clipShape(RoundedRectangle(cornerRadius: 16))
-			}
-			.padding(.horizontal, 16)
-			.padding(.bottom, 24)
 		}
 		.navigationBarHidden(true)
 	}

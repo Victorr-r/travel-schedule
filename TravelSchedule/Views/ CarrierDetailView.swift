@@ -28,7 +28,7 @@ struct CarrierDetailView: View {
 				.padding(.horizontal, 16)
 				.frame(height: 44)
 				
-				ScrollView(.vertical, showsIndicators: false) {
+				ScrollView(.vertical) {
 					VStack(spacing: 0) {
 						Image("РЖД инфо")
 							.resizable()
@@ -82,6 +82,7 @@ struct CarrierDetailView: View {
 					}
 					.padding(.bottom, 140)
 				}
+				.scrollIndicators(.hidden)
 			}
 			
 			Button(action: {

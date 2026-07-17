@@ -12,7 +12,7 @@ struct CarrierDetailView: View {
 			VStack(spacing: 0) {
 				HStack {
 					Button(action: { dismiss() }) {
-						Image(systemName: "chevron.left")
+						Image(systemName: SFSymbols.chevronLeft)
 							.font(.system(size: 17, weight: .bold))
 							.foregroundColor(Color(.ypBlack))
 					}
@@ -21,7 +21,7 @@ struct CarrierDetailView: View {
 						.font(.system(size: 17, weight: .bold))
 						.foregroundColor(Color(.ypBlack))
 					Spacer()
-					Image(systemName: "chevron.left")
+					Image(systemName: SFSymbols.chevronLeft)
 						.font(.system(size: 17, weight: .bold))
 						.foregroundColor(.clear)
 				}

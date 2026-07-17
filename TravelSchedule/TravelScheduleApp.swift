@@ -2,7 +2,7 @@ import SwiftUI
 
 @main
 struct TravelScheduleApp: App {
-	@AppStorage("isDarkMode") private var isDarkMode = false
+	@AppStorage(StorageKeys.isDarkMode) private var isDarkMode = false
 	@State private var isSplashActive = true
 	
 	var body: some Scene {

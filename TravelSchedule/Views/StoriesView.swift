@@ -16,7 +16,7 @@ struct StoriesView: View {
 	@Binding var isPresented: Bool
 	let configuration: Configuration
 	
-	@AppStorage("isDarkMode") private var isDarkMode = false
+	@AppStorage(StorageKeys.isDarkMode) private var isDarkMode = false
 	@State private var progress: CGFloat = 0
 	@State private var timer: Timer.TimerPublisher
 	@State private var cancellable: Cancellable?
@@ -165,7 +165,7 @@ struct StoriesView: View {
 	
 	private func markAsWatched(id: UUID) {
 		if let index = stories.firstIndex(where: { $0.id == id }) {
-			stories[index].isWatched = true
+			stories[index] = stories[index].with(isWatched: true)
 		}
 	}
 }

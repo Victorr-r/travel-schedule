@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-	@AppStorage("isDarkMode") private var isDarkMode = false
+	@AppStorage(StorageKeys.isDarkMode) private var isDarkMode = false
 	@State private var showUserAgreement = false
 	@State private var showDebugMenu = false
 	@ObservedObject var errorSimulator: NetworkErrorSimulator

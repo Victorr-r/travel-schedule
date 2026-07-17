@@ -37,8 +37,7 @@ struct CarrierDetailView: View {
 							.frame(height: 104)
 							.background(Color.white)
 							.clipShape(RoundedRectangle(cornerRadius: 24))
-							.padding(.horizontal, 16)
-							.padding(.top, 16)
+							.padding([.horizontal, .top], 16)
 						
 						HStack {
 							Text("ОАО «\(carrier.title)»")

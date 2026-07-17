@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-	@AppStorage("isDarkMode") private var isDarkMode = false
+	@AppStorage(StorageKeys.isDarkMode) private var isDarkMode = false
 	@State private var selectedTab = 0
 	@State private var departureStation = ""
 	@State private var arrivalStation = ""

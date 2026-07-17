@@ -48,7 +48,7 @@ struct ContentView: View {
 												selectedStoryID = story.id
 												showStories = true
 											}) {
-												Image(story.previewImage)
+												Image(story.previewImageName)
 													.resizable()
 													.scaledToFill()
 													.frame(width: 92, height: 140)

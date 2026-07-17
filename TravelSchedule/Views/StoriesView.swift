@@ -125,7 +125,7 @@ struct StoriesView: View {
 			story.backgroundColor
 				.ignoresSafeArea()
 			
-			Image(story.previewImage)
+			Image(story.previewImageName)
 				.resizable()
 				.scaledToFill()
 				.ignoresSafeArea()

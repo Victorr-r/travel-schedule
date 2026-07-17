@@ -9,7 +9,7 @@ struct ContentView: View {
 	@State private var showArrivalSelection = false
 	@State private var showStories = false
 	@State private var storiesList = Story.allStories
-	@State private var selectedStoryID: UUID? = nil
+	@State private var selectedStoryID: UUID?
 	
 	@StateObject private var errorSimulator = NetworkErrorSimulator()
 	
@@ -110,8 +110,7 @@ struct ContentView: View {
 										departureStation = arrivalStation
 										arrivalStation = temp
 									}) {
-										Image("Button 1")
-											.resizable()
+										Image(.button1)			.resizable()
 											.scaledToFit()
 											.frame(width: 36, height: 36)
 									}
